@@ -109,8 +109,52 @@ function buildShell() {
   initDrawer()
   initWeeklyChart()
   initStatsFilters()
+  initEditor()
 
   if (window.lucide) window.lucide.createIcons()
+}
+
+function initEditor() {
+  const tabs = document.querySelectorAll("[data-tab]")
+  if (!tabs.length) return
+  const panels = document.querySelectorAll("[data-panel]")
+
+  // Set domain code badge (e.g. roblox.com.ml -> first two letters of label)
+  const params = new URLSearchParams(window.location.search)
+  const domain = params.get("domain")
+  const codeEl = document.getElementById("domain-code")
+  if (codeEl && domain) {
+    codeEl.textContent = domain.slice(0, 2).toUpperCase()
+  }
+
+  const setActive = (name) => {
+    tabs.forEach((t) => {
+      const isActive = t.dataset.tab === name
+      t.classList.toggle("text-neutral-50", isActive)
+      t.classList.toggle("text-neutral-400", !isActive)
+      // underline element
+      let underline = t.querySelector("[data-underline]")
+      if (isActive && !underline) {
+        underline = document.createElement("span")
+        underline.dataset.underline = "true"
+        underline.className = "absolute -bottom-0.5 left-1/2 h-0.5 w-10 -translate-x-1/2 rounded-full bg-red-500"
+        t.appendChild(underline)
+      } else if (!isActive && underline) {
+        underline.remove()
+      }
+    })
+    panels.forEach((p) => {
+      p.classList.toggle("hidden", p.dataset.panel !== name)
+    })
+  }
+
+  tabs.forEach((t) => t.addEventListener("click", () => setActive(t.dataset.tab)))
+  setActive("profile")
+
+  // Prevent form navigation on submit (static demo)
+  document.querySelectorAll("[data-panel]").forEach((form) => {
+    form.addEventListener("submit", (e) => e.preventDefault())
+  })
 }
 
 function initStarfield(count = 60) {

