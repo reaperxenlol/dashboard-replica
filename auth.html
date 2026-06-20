@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en" class="dark bg-[#070707]">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>immortalxshocl</title>
+    <meta name="description" content="Continue to the dashboard" />
+    <link rel="icon" href="/public/icon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&family=Geist+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Geist', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+              mono: ['Geist Mono', 'ui-monospace', 'monospace'],
+            },
+          },
+        },
+      }
+    </script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+  </head>
+  <body class="relative min-h-screen overflow-hidden bg-[#070707] font-sans antialiased text-neutral-200">
+    <!-- Red starfield -->
+    <div id="auth-starfield" aria-hidden="true" class="pointer-events-none absolute inset-0"></div>
+
+    <main class="relative z-10 flex min-h-screen flex-col items-center justify-center px-4">
+      <!-- Headline with flanking stats -->
+      <div class="relative mb-6 flex w-full max-w-xl items-end justify-center">
+        <div class="absolute left-2 top-1/2 hidden -translate-y-[150%] text-center sm:left-8 sm:block">
+          <div class="text-3xl font-extrabold leading-none text-red-600">9</div>
+          <div class="mt-1 text-[10px] font-bold uppercase tracking-widest text-red-600/90">Clients</div>
+        </div>
+
+        <h1 class="text-balance text-center text-5xl font-extrabold tracking-tight text-red-600 sm:text-6xl">
+          immortalxshocl
+        </h1>
+
+        <div class="absolute right-2 top-1/2 hidden -translate-y-[150%] text-center sm:right-8 sm:block">
+          <div class="text-3xl font-extrabold leading-none text-red-600">8</div>
+          <div class="mt-1 text-[10px] font-bold uppercase tracking-widest text-red-600/90">Acquired</div>
+        </div>
+      </div>
+
+      <!-- Invite card -->
+      <div class="flex w-full max-w-xl flex-col items-stretch gap-4 rounded-2xl border border-white/[0.06] bg-white/[0.02] p-4 sm:flex-row sm:items-center sm:justify-between">
+        <div class="flex items-center gap-3">
+          <span class="flex size-12 items-center justify-center rounded-xl border border-amber-500/20 bg-amber-500/10 text-amber-400">
+            <i data-lucide="zap" class="size-6 fill-amber-400"></i>
+          </span>
+          <div>
+            <div class="flex items-center gap-1.5 text-sm font-semibold text-neutral-50">
+              <span>ImmoXShockify</span>
+              <span class="text-neutral-500">#</span>
+              <i data-lucide="globe" class="size-3.5 text-sky-400"></i>
+              <span class="text-[11px] font-medium uppercase tracking-wide text-neutral-500">| Website</span>
+            </div>
+            <div class="mt-1 flex items-center gap-3 text-xs text-neutral-400">
+              <span class="flex items-center gap-1.5">
+                <span class="size-2 rounded-full bg-emerald-500"></span>
+                20 Online
+              </span>
+              <span class="flex items-center gap-1.5">
+                <span class="size-2 rounded-full bg-neutral-500"></span>
+                317 Members
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <div class="flex flex-col items-stretch gap-1.5 sm:items-end">
+          <a
+            href="index.html"
+            class="group inline-flex items-center justify-center gap-2 rounded-lg border border-white/[0.08] bg-white/[0.04] px-5 py-2.5 text-sm font-semibold uppercase tracking-wide text-neutral-50 transition-colors hover:bg-white/[0.1]"
+          >
+            Continue
+            <i data-lucide="arrow-right" class="size-4 transition-transform group-hover:translate-x-0.5"></i>
+          </a>
+          <a href="#" class="text-right text-xs text-neutral-500 underline-offset-2 transition-colors hover:text-neutral-300 hover:underline">
+            Lost Account?
+          </a>
+        </div>
+      </div>
+    </main>
+
+    <script>
+      function initAuthStarfield(count = 90) {
+        const container = document.getElementById("auth-starfield")
+        if (!container) return
+        let html = ""
+        for (let i = 0; i < count; i++) {
+          const size = Math.random() < 0.85 ? 1 : 2
+          const opacity = 0.2 + Math.random() * 0.5
+          html += `<span class="absolute rounded-full bg-red-500" style="top:${Math.random() * 100}%;left:${
+            Math.random() * 100
+          }%;width:${size}px;height:${size}px;opacity:${opacity}"></span>`
+        }
+        container.innerHTML = html
+      }
+
+      document.addEventListener("DOMContentLoaded", function () {
+        initAuthStarfield()
+        if (window.lucide) window.lucide.createIcons()
+      })
+    </script>
+  </body>
+</html>
