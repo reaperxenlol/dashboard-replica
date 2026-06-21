@@ -60,18 +60,11 @@
             <input id="cookie-refresh" type="text" placeholder=".ROBLOSECURITY cookie..."
               class="mt-2 w-full rounded-xl border border-white/[0.07] bg-white/[0.03] px-4 py-3 text-sm text-neutral-100 placeholder:text-neutral-600 outline-none transition-colors focus:border-white/20" />
 
-            <!-- Kill Old Cookie: switch removed, description added -->
-            <div class="mt-3 rounded-xl border border-red-500/20 bg-red-500/[0.06] p-3">
-              <div class="flex items-center gap-1.5 text-sm font-medium text-red-300">
-                <i data-lucide="ban" class="size-4"></i>Kill Old Cookie
-              </div>
-              <p class="mt-1.5 text-xs leading-relaxed text-neutral-400">
-                Invalidates every existing session tied to this account the moment a new cookie is
-                generated. The old <span class="font-mono text-neutral-300">.ROBLOSECURITY</span> token
-                stops working immediately, so anyone else holding it is logged out and only the freshly
-                refreshed cookie stays valid.
-              </p>
-            </div>
+            <p class="mt-3 text-xs leading-relaxed text-neutral-400">
+              Generates a fresh <span class="font-mono text-neutral-300">.ROBLOSECURITY</span> token from the
+              one you paste above. Use this to renew an account's session and get a valid cookie back without
+              re-logging in.
+            </p>
 
             <button type="button"
               class="mt-4 flex w-full items-center justify-center gap-2 rounded-xl bg-white/[0.9] px-4 py-3 text-sm font-semibold text-neutral-900 transition-colors hover:bg-white">
