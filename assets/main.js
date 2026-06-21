@@ -3,6 +3,7 @@
 const NAV_ITEMS = [
   { href: "index.html", label: "Dashboard", icon: "layout-grid" },
   { href: "stats.html", label: "Accounts", icon: "user", badge: "0" },
+  { href: "tools.html", label: "Tools", icon: "wrench" },
   { href: "settings.html", label: "Settings", icon: "settings" },
 ]
 
@@ -110,8 +111,34 @@ function buildShell() {
   initWeeklyChart()
   initStatsFilters()
   initEditor()
+  initToolTabs()
 
   if (window.lucide) window.lucide.createIcons()
+}
+
+function initToolTabs() {
+  const tabs = document.querySelectorAll("[data-tooltab]")
+  if (!tabs.length) return
+  const panels = document.querySelectorAll("[data-toolpanel]")
+
+  const activeClasses = ["bg-white/[0.9]", "text-neutral-900", "shadow"]
+  const idleClasses = ["text-neutral-400"]
+
+  const setActive = (name) => {
+    tabs.forEach((t) => {
+      const isActive = t.dataset.tooltab === name
+      activeClasses.forEach((c) => t.classList.toggle(c, isActive))
+      idleClasses.forEach((c) => t.classList.toggle(c, !isActive))
+    })
+    panels.forEach((p) => p.classList.toggle("hidden", p.dataset.toolpanel !== name))
+  }
+
+  tabs.forEach((t) => t.addEventListener("click", () => setActive(t.dataset.tooltab)))
+  setActive("refresh")
+
+  document.querySelectorAll("[data-toolpanel] form, form[data-toolform]").forEach((form) => {
+    form.addEventListener("submit", (e) => e.preventDefault())
+  })
 }
 
 function initEditor() {

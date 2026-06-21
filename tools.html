@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en" class="dark bg-[#070707]">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tools | Dashboard</title>
+    <meta name="description" content="Account tools" />
+    <link rel="icon" href="/public/icon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Geist', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+              mono: ['Geist Mono', 'ui-monospace', 'monospace'],
+            },
+          },
+        },
+      }
+    </script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script defer src="assets/main.js"></script>
+  </head>
+  <body class="bg-[#070707] font-sans antialiased text-neutral-200">
+    <div id="page" data-breadcrumb="Tools">
+      <!-- Section title -->
+      <div class="mb-5 flex items-center gap-2">
+        <i data-lucide="cookie" class="size-5 text-neutral-300"></i>
+        <h1 class="text-xl font-semibold text-neutral-50">Cookie</h1>
+      </div>
+
+      <div class="grid gap-5 lg:grid-cols-2">
+        <!-- Tool card -->
+        <div class="rounded-2xl border border-white/[0.07] bg-white/[0.02] p-4 sm:p-5">
+          <!-- Tabs (Check removed) -->
+          <div class="flex items-center gap-1 rounded-full border border-white/[0.06] bg-white/[0.03] p-1">
+            <button type="button" data-tooltab="refresh"
+              class="flex flex-1 items-center justify-center gap-1.5 rounded-full px-4 py-2 text-sm font-medium transition-colors">
+              <i data-lucide="refresh-cw" class="size-3.5"></i>Refresh
+            </button>
+            <button type="button" data-tooltab="bypass"
+              class="flex flex-1 items-center justify-center gap-1.5 rounded-full px-4 py-2 text-sm font-medium transition-colors">
+              <i data-lucide="shield" class="size-3.5"></i>Bypass
+            </button>
+          </div>
+
+          <!-- Refresh panel -->
+          <div data-toolpanel="refresh" class="mt-5">
+            <label for="cookie-refresh" class="flex items-center gap-1.5 text-xs font-medium text-neutral-400">
+              <i data-lucide="cookie" class="size-3.5"></i>Cookie
+            </label>
+            <input id="cookie-refresh" type="text" placeholder=".ROBLOSECURITY cookie..."
+              class="mt-2 w-full rounded-xl border border-white/[0.07] bg-white/[0.03] px-4 py-3 text-sm text-neutral-100 placeholder:text-neutral-600 outline-none transition-colors focus:border-white/20" />
+
+            <!-- Kill Old Cookie: switch removed, description added -->
+            <div class="mt-3 rounded-xl border border-red-500/20 bg-red-500/[0.06] p-3">
+              <div class="flex items-center gap-1.5 text-sm font-medium text-red-300">
+                <i data-lucide="ban" class="size-4"></i>Kill Old Cookie
+              </div>
+              <p class="mt-1.5 text-xs leading-relaxed text-neutral-400">
+                Invalidates every existing session tied to this account the moment a new cookie is
+                generated. The old <span class="font-mono text-neutral-300">.ROBLOSECURITY</span> token
+                stops working immediately, so anyone else holding it is logged out and only the freshly
+                refreshed cookie stays valid.
+              </p>
+            </div>
+
+            <button type="button"
+              class="mt-4 flex w-full items-center justify-center gap-2 rounded-xl bg-white/[0.9] px-4 py-3 text-sm font-semibold text-neutral-900 transition-colors hover:bg-white">
+              <i data-lucide="refresh-cw" class="size-4"></i>Refresh Cookie
+            </button>
+          </div>
+
+          <!-- Bypass panel -->
+          <div data-toolpanel="bypass" class="mt-5 hidden">
+            <label for="cookie-bypass" class="flex items-center gap-1.5 text-xs font-medium text-neutral-400">
+              <i data-lucide="cookie" class="size-3.5"></i>Cookie
+            </label>
+            <input id="cookie-bypass" type="text" placeholder=".ROBLOSECURITY cookie..."
+              class="mt-2 w-full rounded-xl border border-white/[0.07] bg-white/[0.03] px-4 py-3 text-sm text-neutral-100 placeholder:text-neutral-600 outline-none transition-colors focus:border-white/20" />
+            <button type="button"
+              class="mt-4 flex w-full items-center justify-center gap-2 rounded-xl bg-white/[0.9] px-4 py-3 text-sm font-semibold text-neutral-900 transition-colors hover:bg-white">
+              <i data-lucide="shield" class="size-4"></i>Bypass Cookie
+            </button>
+          </div>
+        </div>
+
+        <!-- Response card -->
+        <div class="rounded-2xl border border-white/[0.07] bg-white/[0.02] p-4 sm:p-5">
+          <div class="flex items-center gap-1.5 text-xs font-medium tracking-wide text-neutral-500">
+            <i data-lucide="terminal" class="size-3.5"></i>RESPONSE
+          </div>
+          <div class="flex h-72 flex-col items-center justify-center gap-2 text-center">
+            <div class="flex size-10 items-center justify-center rounded-full border border-white/[0.07] bg-white/[0.03]">
+              <i data-lucide="corner-down-left" class="size-4 text-neutral-500"></i>
+            </div>
+            <p class="text-xs tracking-wide text-neutral-600">RUN A TOOL TO SEE RESULTS</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
